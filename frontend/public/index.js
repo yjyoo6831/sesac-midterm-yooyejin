@@ -17,7 +17,28 @@ const getTodos = () => {
         alert('데이터를 불러올 수 없음')
     }
 };
-// getTodos();
+
+
+getTodos();
+
+const fetchInfo = () => {
+    return fetch('https://jsonplaceholder.typicode.com/todos/')
+  .then(response => {
+    if(response.ok){
+        return response.json();
+    }else{
+        console.error("error");
+    }
+  })
+};
+const repoInfos=function(info) { 
+    for(user of userInfos){
+        let li = document.createElement('input');
+        li.classList.add('todo-list');
+        let info= `` ///여기부터 하기 
+    }
+}
+
 
 // addBtn.addEventListener("click", () => {
 function addTodo() {
