@@ -1,3 +1,4 @@
+const { now } = require('sequelize/lib/utils');
 const todoModel = require('../models/Todo');
 const {Todo} = require('../models/index');
 
@@ -41,10 +42,15 @@ exports.getTodo = async(req,res) => {
         const todo = await Todo.findOne({
             where : {id}
         });
-        console.log(">> ", todo);
-        res.json(todo);
-        if(todo === null){
-            res.send('Todo not found2');
+        console.log(todo); // 삭제되면 1 , 삭제실패시 0 
+        const obj={
+            "message": "Todo not found"
+          }
+        if(todo){
+            return res.json(todo);
+            // return res.send(true);
+        }else{
+            return res.send(obj);
         }
         
     } catch (error) {
@@ -61,17 +67,29 @@ exports.patchTodo = async(req,res) => {
     const {title,done} = req.body;
     
     console.log("patch2 >> ",id,title,done);
-    const todo = await Todo.update({
+    const todoUp = await Todo.update({
         title,done
     },
     {
         where : {id}
     });
-    console.log("up? " ,isUpdated)
-    if(isUpdated){
-        return res.json(todo);
+    console.log("up? " ,todoUp)
+    const obj={
+        "message": "Todo not found"
+    }
+    const obj1=
+        {
+            "id": id,
+            "title": title,
+            "done": done,
+            "createdAt": Date.now(),
+            "updatedAt": Date.now()
+        }
+    if(todoUp == '1'){
+        return res.json(obj1);
+        // return res.send(true);
     }else{
-        return res.send("Todo not found");
+        return res.send(obj);
     }
     console.log(" up >> ", todo);
 }
@@ -88,13 +106,22 @@ exports.deleteTodo = async(req,res) => {
         });
         console.log(isDeleted); // 삭제되면 1 , 삭제실패시 0 
 
+        const obj={
+            "message": "Todo not found"
+          }
+        const obj1={
+             "message": "Todo deleted successfully",
+                "deletedId": id
+          }
+
         if(isDeleted){
-            return res.send(true);
+            return res.json(obj1);
+            // return res.send(true);
         }else{
-            return res.send("Todo not found");
+            return res.send(obj);
         }
     } catch (error) {
-        console.error(err);
+        console.error(error);
         res.status(500).send('Internal Server Error');
     }
 }
