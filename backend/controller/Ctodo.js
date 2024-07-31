@@ -42,7 +42,7 @@ exports.getTodo = async(req,res) => {
         const todo = await Todo.findOne({
             where : {id}
         });
-        console.log(todo); // 삭제되면 1 , 삭제실패시 0 
+        console.log(todo); 
         const obj={
             "message": "Todo not found"
           }
@@ -77,17 +77,12 @@ exports.patchTodo = async(req,res) => {
     const obj={
         "message": "Todo not found"
     }
-    const obj1=
-        {
-            "id": id,
-            "title": title,
-            "done": done,
-            "createdAt": Date.now(),
-            "updatedAt": Date.now()
-        }
+    const todofinal = await Todo.findOne({
+        where : {id}
+    });
+    console.log(todofinal); // 삭제되면 1 , 삭제실패시 0 
     if(todoUp == '1'){
-        return res.json(obj1);
-        // return res.send(true);
+        return res.json(todofinal);
     }else{
         return res.send(obj);
     }
