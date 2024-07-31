@@ -1,6 +1,4 @@
-header{
-    background-color: lightgreen;
-}
+
 
 /* * {
     margin: 0;
@@ -57,13 +55,15 @@ header{
   }
   
   .todo-box {
-    width: 500px;
-    height: 400px;
+    /* width: 500px;
+    height: 400px; */
     padding: 10px;
     border: 2px solid #000;
     background-color: #eee;
   }
-  
+  .new-todo input:checked ~ .check-mark::after{
+    background: rebeccapurple;
+  }
   .new-todo {
     display: block;
     position: relative;
@@ -101,6 +101,7 @@ header{
     text-decoration: line-through;
   }
   
+  
   .new-todo .check-mark::after {
     display: none;
     position: absolute;
@@ -131,7 +132,7 @@ header{
     display: inline-block;
     font-size: 30px;
     cursor: pointer;
-    content: "\00d7";
+    content: "x";
   }
   
   .rm-btn:hover {
@@ -139,3 +140,37 @@ header{
   }
   
 
+@media screen and (max-width: 540px) {
+    body {
+			background-color: red;
+		}
+    .header{
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media screen and (max-width: 540px) {
+    body {
+			background-color: red;
+		}
+}
+@media screen and (min-width: 960px) {
+    .header , .input-todo, .todo-box{
+        max-width: 800px;
+    }
+    
+}
+.header{
+    background-color: lightgreen;
+    
+}
+img{
+    width: 300px;
+    height: 100px;
+}
+.title{
+    
+    justify-content: center;
+    align-items: center;
+    background-color: violet;
+}

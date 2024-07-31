@@ -5,33 +5,6 @@ const inputTodo = document.querySelector(".input-todo");
 const addBtn = document.querySelector("#addBtn");
 const todoBox = document.querySelector("#todoBox");
 
-addBtn.addEventListener("click", () => {
-    const newTodo = document.createElement("label");
-    const checkBox = document.createElement("input");
-    const checkMark = document.createElement("span");
-    const rmBtn = document.createElement("button");
-
-    newTodo.className = "new-todo";
-    newTodo.innerText = todo.value;
-    checkBox.type = "checkBox";
-    checkMark.className = "check-mark";
-    rmBtn.className = "rm-btn";
-
-    newTodo.appendChild(checkBox);
-    newTodo.appendChild(checkMark);
-    newTodo.appendChild(rmBtn);
-    todoBox.appendChild(newTodo);
-
-    todo.value = "";
-
-    checkBox.addEventListener("change", () => {
-    newTodo.classList.toggle("check");
-  });
-
-    rmBtn.addEventListener("click", (event) => {
-    todoBox.removeChild(event.currentTarget.parentNode);
-  });
-});
 
 const getTodos = () => {
     try {
@@ -49,21 +22,20 @@ const getTodos = () => {
 // addBtn.addEventListener("click", () => {
 function addTodo() {
 
-    const newTodo = document.createElement("label");
     const checkBox = document.createElement("input"); //checkbox 
+    const newTodo = document.createElement("label");
     const checkMark = document.createElement("span"); //취소선
     const rmBtn = document.createElement("button");
     if(todo.value === '' ){
         alert('공백이나 빈 문자열이 있습니다.');
         todo.value='';
     }
-    console.log(">>> ",todo.value);
+    console.log(">>> ",inputTodo.value);
     newTodo.className = "new-todo";
     newTodo.innerText = inputTodo.value;
     checkBox.type = "checkBox";
     checkMark.className = "check-mark";
     rmBtn.className = "rm-btn";
-    // rmBtn.value='X';
   
     newTodo.appendChild(checkBox);
     newTodo.appendChild(checkMark);
