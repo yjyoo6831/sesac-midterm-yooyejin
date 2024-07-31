@@ -11,11 +11,16 @@ exports.postTodos = async(req,res) => {
         const newTodo = await Todo.create({
             id, title, done
         });
+        console.log("postTodos>> ",newTodo);
         res.json(newTodo);
+        
 
     } catch(err){
+        const obj={
+            "message": "Internal Server Error"
+          }
         console.error('insert error > ',err);
-        res.status(500).send('Internal Server Error');
+        res.status(500).send(obj);
     }
 
 
