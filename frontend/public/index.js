@@ -1,6 +1,6 @@
 
 
-// const todo = document.querySelector("#todo");
+const todo = document.querySelector("#todo");
 const inputTodo = document.querySelector(".input-todo");
 const addBtn = document.querySelector("#addBtn");
 const todoBox = document.querySelector("#todoBox");
@@ -44,22 +44,22 @@ const getTodos = () => {
         alert('데이터를 불러올 수 없음')
     }
 };
-getTodos();
+// getTodos();
 
 // addBtn.addEventListener("click", () => {
 function addTodo() {
 
     const newTodo = document.createElement("label");
-    const checkBox = document.createElement("input");
-    const checkMark = document.createElement("span");
+    const checkBox = document.createElement("input"); //checkbox 
+    const checkMark = document.createElement("span"); //취소선
     const rmBtn = document.createElement("button");
-  
-    if(inputTodo.value='' ){
+    if(todo.value === '' ){
         alert('공백이나 빈 문자열이 있습니다.');
-        inputTodo.value='';
+        todo.value='';
     }
+    console.log(">>> ",todo.value);
     newTodo.className = "new-todo";
-    newTodo.innerText = todo.value;
+    newTodo.innerText = inputTodo.value;
     checkBox.type = "checkBox";
     checkMark.className = "check-mark";
     rmBtn.className = "rm-btn";
