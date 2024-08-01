@@ -51,6 +51,7 @@ function addTodo() {
         alert('공백이나 빈 문자열이 있습니다.');
         todo.value='';
     }
+    
     console.log(">>> ",inputTodo.value);
     newTodo.className = "new-todo";
     newTodo.innerText = inputTodo.value;
