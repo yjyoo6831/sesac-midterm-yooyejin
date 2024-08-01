@@ -61,9 +61,9 @@
     border: 2px solid #000;
     background-color: #eee;
   }
-  .new-todo input:checked ~ .check-mark::after{
+  /* .new-todo input:checked ~ .check-mark::after{
     background: rebeccapurple;
-  }
+  } */
   .new-todo {
     display: block;
     position: relative;
@@ -99,6 +99,7 @@
   
   .check {
     text-decoration: line-through;
+    color: red;
   }
   
   
